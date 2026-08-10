@@ -3,8 +3,9 @@
 /.cargo/
 /.dotnet/
 /.mingw/
+/reader/.mingwcrt/
 /winlibs.zip
-/binutils*.pkg.tar.zst
+*.pkg.tar.zst
 /rustup-init.exe
 
 # Rust 构建产物
