@@ -11,12 +11,16 @@
 
 标题、粗体/斜体、行内代码、代码块、引用、无序/有序列表、任务列表、表格、分隔线、链接、图片（相对路径基于文件所在目录）、Github 风格引用块。
 
-## 构建
+## 构建（开发环境）
 
 ```bash
 cargo build --release
 # 产物：target/release/reader.exe
 ```
+
+需要 Rust 的 `x86_64-pc-windows-gnu` 目标 + mingw binutils（提供 `dlltool`，用于生成 Windows API-set 导入库），链接器使用 rust-lld（rustup 自带）。`reader/.cargo/config.toml` 中的路径是构建机的绝对路径，换机器需按本机工具链位置修改。
+
+> 大多数用户无需自行构建：直接用 `dist/mdpeek.exe`，双击 `dist/install.bat` 一键安装即可。
 
 ## 安装
 
