@@ -1,5 +1,7 @@
 # mdpeek
 
+中文 | [English](README.en.md)
+
 极轻量的 Windows Markdown 单文件阅读器。
 
 - **单个 exe**：约 9 MB，无运行时依赖
