@@ -2,7 +2,7 @@
 
 An ultra-lightweight single-file Markdown reader for Windows.
 
-[中文](README.md) | English
+<p align="center">[中文](README.md) | English</p>
 
 - **Single exe**: ~9 MB, no runtime dependencies
 - **Tiny footprint**: ~140 MB RAM — native egui rendering, far lighter than browser/Electron apps

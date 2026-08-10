@@ -1,6 +1,6 @@
 # mdpeek
 
-中文 | [English](README.en.md)
+<p align="center">中文 | [English](README.en.md)</p>
 
 极轻量的 Windows Markdown 单文件阅读器。
 
