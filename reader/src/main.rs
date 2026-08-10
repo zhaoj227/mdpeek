@@ -10,38 +10,42 @@ use egui_commonmark::{CommonMarkCache, CommonMarkViewer};
 fn main() -> eframe::Result {
     let path = std::env::args().nth(1).map(PathBuf::from);
 
-    let mut markdown = String::new();
-    let mut title = "Markdown 阅读器".to_owned();
-
-    match path {
+    let (markdown, title) = match path {
         Some(p) if p.is_file() => match std::fs::read_to_string(&p) {
             Ok(content) => {
                 // 切到文件所在目录，让 markdown 里的相对路径图片可以正常加载
                 if let Some(dir) = p.parent() {
                     let _ = std::env::set_current_dir(dir);
                 }
-                title = p
+                let title = p
                     .file_name()
                     .map(|n| n.to_string_lossy().to_string())
-                    .unwrap_or(title);
-                markdown = content;
+                    .unwrap_or_else(|| "Markdown 阅读器".to_owned());
+                (content, title)
             }
-            Err(e) => markdown = format!("> 无法读取文件：{}\n>\n> {}", p.display(), e),
+            Err(e) => (
+                format!("> 无法读取文件：{}\n>\n> {}", p.display(), e),
+                "Markdown 阅读器".to_owned(),
+            ),
         },
-        Some(p) => markdown = format!("> 未找到文件：{}", p.display()),
-        None => {
-            markdown = "# Markdown 阅读器\n\n\
-在资源管理器中右键 `.md` 文件 → **打开方式** → 选择 **Markdown 阅读器**。\n\n\
-也可以通过命令行传入文件路径，或把文件拖到本窗口上。\n"
-                .to_owned();
-        }
-    }
+        Some(p) => (
+            format!("> 未找到文件：{}", p.display()),
+            "Markdown 阅读器".to_owned(),
+        ),
+        None => (
+            "# Markdown 阅读器\n\n在资源管理器中右键 `.md` 文件 → **打开方式** → 选择 **Markdown 阅读器**。\n\n也可以通过命令行传入文件路径，或把文件拖到本窗口上。\n"
+                .to_owned(),
+            "Markdown 阅读器".to_owned(),
+        ),
+    };
 
     let options = eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default()
             .with_inner_size([880.0, 760.0])
             .with_min_inner_size([460.0, 360.0])
             .with_title(title),
+        // 用 OpenGL 后端，内存占用比默认的 wgpu(DX12) 低很多
+        renderer: eframe::Renderer::Glow,
         ..Default::default()
     };
 
@@ -88,8 +92,8 @@ struct App {
 }
 
 impl eframe::App for App {
-    fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
-        egui::CentralPanel::default().show(ctx, |ui| {
+    fn ui(&mut self, ui: &mut egui::Ui, _frame: &mut eframe::Frame) {
+        egui::CentralPanel::default().show(ui, |ui| {
             egui::ScrollArea::vertical()
                 .auto_shrink([false, false])
                 .show(ui, |ui| {

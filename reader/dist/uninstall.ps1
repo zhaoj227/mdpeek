@@ -1,10 +1,10 @@
-# Markdown 阅读器 卸载脚本
-$progid = 'MDReader'
+﻿﻿# Markdown 阅读器 卸载脚本
+$progid = 'MDpeek'
 
 Remove-Item -Path "Registry::HKEY_CURRENT_USER\Software\Classes\.md\OpenWithProgids\$progid" -ErrorAction SilentlyContinue
 Remove-Item -Path "Registry::HKEY_CURRENT_USER\Software\Classes\$progid" -Recurse -ErrorAction SilentlyContinue
 
-$dir = Join-Path $env:LOCALAPPDATA 'Programs\mdreader'
+$dir = Join-Path $env:LOCALAPPDATA 'Programs\mdpeek'
 Remove-Item -Path $dir -Recurse -Force -ErrorAction SilentlyContinue
 
 Write-Host '已卸载。' -ForegroundColor Green

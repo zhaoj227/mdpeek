@@ -2,6 +2,7 @@
 /.rustup/
 /.cargo/
 /.dotnet/
+/.mingw/
 /winlibs.zip
 /binutils*.pkg.tar.zst
 /rustup-init.exe

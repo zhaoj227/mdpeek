@@ -1,14 +1,14 @@
-# Markdown 阅读器 一键安装脚本
+﻿﻿# Markdown 阅读器 一键安装脚本
 # 功能：复制程序到用户目录、注册 .md 的「打开方式」入口。
 $ErrorActionPreference = 'Stop'
 
-$progid  = 'MDReader'
-$dir     = Join-Path $env:LOCALAPPDATA 'Programs\mdreader'
-$src     = Join-Path $PSScriptRoot 'mdreader.exe'
-$exe     = Join-Path $dir 'mdreader.exe'
+$progid  = 'MDpeek'
+$dir     = Join-Path $env:LOCALAPPDATA 'Programs\mdpeek'
+$src     = Join-Path $PSScriptRoot 'mdpeek.exe'
+$exe     = Join-Path $dir 'mdpeek.exe'
 
 if (-not (Test-Path $src)) {
-    Write-Host "[错误] 未找到 $src，请确认 install.bat 与 mdreader.exe 在同一目录。" -ForegroundColor Red
+    Write-Host "[错误] 未找到 $src，请确认 install.bat 与 mdpeek.exe 在同一目录。" -ForegroundColor Red
     exit 1
 }
 

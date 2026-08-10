@@ -2,8 +2,8 @@
 
 极轻量的 Windows Markdown 单文件阅读器。
 
-- **单个 exe**：约 10 MB，无运行时依赖
-- **资源占用极小**：内存约 30-40 MB
+- **单个 exe**：约 9 MB，无运行时依赖
+- **资源占用极小**：内存约 140 MB（egui 原生渲染，远低于浏览器 / Electron 类应用）
 - **纯原生渲染**：Rust + [egui](https://github.com/emilk/egui)，不依赖任何 WebView / 浏览器内核 / 框架
 - **一键安装**：双击 `install.bat` 后，右键 `.md` 文件 → 打开方式 → mdpeek
 
