@@ -1,0 +1,14 @@
+# 本机编译工具链（不提交）
+/.rustup/
+/.cargo/
+/.dotnet/
+/winlibs.zip
+/binutils*.pkg.tar.zst
+/rustup-init.exe
+
+# Rust 构建产物
+/reader/target/
+
+# 系统/编辑器
+Thumbs.db
+.DS_Store
